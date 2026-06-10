@@ -91,10 +91,7 @@ export default function SubmissionsPage() {
     fetchSubmissions();
   }, [fetchSubmissions]);
 
-  // Debounce search
-  useEffect(() => {
-    setPage(1);
-  }, [search, filterRec]);
+
 
   const stats = {
     total,
@@ -187,7 +184,10 @@ export default function SubmissionsPage() {
               <Input
                 placeholder="Search by name, email, or profession…"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                  setPage(1);
+                }}
                 className="pl-9 text-sm"
               />
             </div>
@@ -195,7 +195,10 @@ export default function SubmissionsPage() {
               <Filter size={14} className="text-slate-400 flex-shrink-0" />
               <div className="flex gap-2 flex-wrap">
                 <button
-                  onClick={() => setFilterRec("")}
+                  onClick={() => {
+                    setFilterRec("");
+                    setPage(1);
+                  }}
                   className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                     filterRec === ""
                       ? "bg-indigo-600 text-white border-indigo-600"
@@ -207,7 +210,10 @@ export default function SubmissionsPage() {
                 {recommendations.map((r) => (
                   <button
                     key={r}
-                    onClick={() => setFilterRec(filterRec === r ? "" : r)}
+                    onClick={() => {
+                      setFilterRec(filterRec === r ? "" : r);
+                      setPage(1);
+                    }}
                     className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
                       filterRec === r
                         ? "bg-indigo-600 text-white border-indigo-600"
@@ -389,7 +395,7 @@ function SubmissionCard({
               <p className="text-xs font-semibold text-indigo-400 uppercase tracking-wider mb-1 flex items-center gap-1">
                 <GraduationCap size={11} /> AI Reason
               </p>
-              <p className="text-sm text-slate-600 leading-relaxed italic">"{s.ai_reason}"</p>
+              <p className="text-sm text-slate-600 leading-relaxed italic">&ldquo;{s.ai_reason}&rdquo;</p>
             </div>
           )}
         </div>

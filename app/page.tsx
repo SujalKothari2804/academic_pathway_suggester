@@ -173,7 +173,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="text-slate-500 text-lg max-w-xl mx-auto leading-relaxed">
-              Tell us about yourself and we'll match you with the right degree program — backed by intelligent recommendations.
+              Tell us about yourself and we&apos;ll match you with the right degree program — backed by intelligent recommendations.
             </p>
 
             {/* Stats */}
@@ -444,7 +444,7 @@ export default function HomePage() {
                     </h3>
                   </div>
                   <p className="text-slate-600 text-sm leading-relaxed italic">
-                    "{result.aiReason}"
+                    &ldquo;{result.aiReason}&rdquo;
                   </p>
                 </div>
 
